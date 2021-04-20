@@ -653,7 +653,7 @@
 		34FEA6AC1DB6E083005C9212 /* OIDLoopbackHTTPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIDLoopbackHTTPServer.h; sourceTree = "<group>"; };
 		34FEA6AD1DB6E083005C9212 /* OIDLoopbackHTTPServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIDLoopbackHTTPServer.m; sourceTree = "<group>"; };
 		439F2B03262EE202003F400F /* AppAuth4Ext_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppAuth4Ext_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		439F2B13262EE203003F400F /* AppAuth4Ext_iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "AppAuth4Ext_iOS.plist"; path = "/Users/dirk/projects/pEp/AppAuth-iOS/AppAuth4Ext_iOS.plist"; sourceTree = "<absolute>"; };
+		439F2B13262EE203003F400F /* AppAuth4Ext_iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = AppAuth4Ext_iOS.plist; path = "/Users/dirk/projects/pEp/AppAuth-iOS/AppAuth4Ext_iOS.plist"; sourceTree = "<absolute>"; };
 		60140F781DE4262000DA0DC3 /* OIDClientMetadataParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIDClientMetadataParameters.h; sourceTree = "<group>"; };
 		60140F791DE4276800DA0DC3 /* OIDClientMetadataParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIDClientMetadataParameters.m; sourceTree = "<group>"; };
 		60140F7B1DE42E1000DA0DC3 /* OIDRegistrationRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIDRegistrationRequest.m; sourceTree = "<group>"; };
@@ -2689,7 +2689,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "AppAuth4Ext_iOS.plist";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"EXT_SHARE=1",
+				);
+				INFOPLIST_FILE = AppAuth4Ext_iOS.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -2714,7 +2718,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "AppAuth4Ext_iOS.plist";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"EXT_SHARE=1",
+				);
+				INFOPLIST_FILE = AppAuth4Ext_iOS.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
