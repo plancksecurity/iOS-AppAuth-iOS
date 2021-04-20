@@ -134,6 +134,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL)presentExternalUserAgentRequest:(nonnull id<OIDExternalUserAgentRequest>)request
                                 session:(nonnull id<OIDExternalUserAgentSession>)session {
+#if EXT_SHARE
+    return NO; // Do nothing in a sharing extension
+#else
   // If the app store URL is set, checks if the app is installed and if not opens the app store.
   if (_appStoreURL && _canOpenURLScheme) {
     // Verifies existence of LSApplicationQueriesSchemes Info.plist key.
@@ -157,6 +160,7 @@ NS_ASSUME_NONNULL_BEGIN
   requestURL = _URLTransformation(requestURL);
   BOOL openedInBrowser = [[UIApplication sharedApplication] openURL:requestURL];
   return openedInBrowser;
+#endif
 }
 
 - (void)dismissExternalUserAgentAnimated:(BOOL)animated
