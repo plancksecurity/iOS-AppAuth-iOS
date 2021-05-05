@@ -2701,7 +2701,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
-					SHARE_EXT,
+					EXT_SHARE,
 				);
 				INFOPLIST_FILE = AppAuthForExtensions.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";

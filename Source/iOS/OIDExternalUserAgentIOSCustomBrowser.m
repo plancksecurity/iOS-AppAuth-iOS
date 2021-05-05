@@ -138,7 +138,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///   from `OIDAuthState (IOS)`.
 - (BOOL)presentExternalUserAgentRequest:(nonnull id<OIDExternalUserAgentRequest>)request
                                 session:(nonnull id<OIDExternalUserAgentSession>)session {
-#if SHARE_EXT
+#if EXT_SHARE
     return NO;
 #else
   // If the app store URL is set, checks if the app is installed and if not opens the app store.
