@@ -386,6 +386,7 @@
 		34D5EC451E6D1AD900814354 /* OIDSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D5EC441E6D1AD900814354 /* OIDSwiftTests.swift */; };
 		34FEA6AE1DB6E083005C9212 /* OIDLoopbackHTTPServer.h in Headers */ = {isa = PBXBuildFile; fileRef = 34FEA6AC1DB6E083005C9212 /* OIDLoopbackHTTPServer.h */; };
 		34FEA6AF1DB6E083005C9212 /* OIDLoopbackHTTPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FEA6AD1DB6E083005C9212 /* OIDLoopbackHTTPServer.m */; };
+		43476A3C264285D200862D7A /* AppAuthForExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 43476A3B264285D100862D7A /* AppAuthForExtensions.h */; };
 		43CDF0642642799B00E8E944 /* OIDExternalUserAgentIOS.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DEABA82018E5B50022AC32 /* OIDExternalUserAgentIOS.m */; };
 		43CDF0652642799B00E8E944 /* OIDFieldMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 341741C41C5D8243000EF209 /* OIDFieldMapping.m */; };
 		43CDF0662642799B00E8E944 /* OIDIDToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A663271E871DD40060B664 /* OIDIDToken.m */; };
@@ -652,6 +653,7 @@
 		34D5EC441E6D1AD900814354 /* OIDSwiftTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OIDSwiftTests.swift; sourceTree = "<group>"; };
 		34FEA6AC1DB6E083005C9212 /* OIDLoopbackHTTPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIDLoopbackHTTPServer.h; sourceTree = "<group>"; };
 		34FEA6AD1DB6E083005C9212 /* OIDLoopbackHTTPServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIDLoopbackHTTPServer.m; sourceTree = "<group>"; };
+		43476A3B264285D100862D7A /* AppAuthForExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppAuthForExtensions.h; sourceTree = "<group>"; };
 		43CDF0A22642799B00E8E944 /* AppAuthForExtensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppAuthForExtensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		43CDF0A32642799C00E8E944 /* AppAuthForExtensions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = AppAuthForExtensions.plist; path = "/Users/dirk/projects/pEp/AppAuth-iOS/AppAuthForExtensions.plist"; sourceTree = "<absolute>"; };
 		60140F781DE4262000DA0DC3 /* OIDClientMetadataParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIDClientMetadataParameters.h; sourceTree = "<group>"; };
@@ -973,6 +975,7 @@
 		43CDF0A826427D2500E8E944 /* AppAuthForExtensions */ = {
 			isa = PBXGroup;
 			children = (
+				43476A3B264285D100862D7A /* AppAuthForExtensions.h */,
 				43CDF0A32642799C00E8E944 /* AppAuthForExtensions.plist */,
 			);
 			path = AppAuthForExtensions;
@@ -1178,6 +1181,7 @@
 				43CDF0992642799B00E8E944 /* OIDAuthorizationRequest.h in Headers */,
 				43CDF09A2642799B00E8E944 /* OIDTokenUtilities.h in Headers */,
 				43CDF09B2642799B00E8E944 /* OIDError.h in Headers */,
+				43476A3C264285D200862D7A /* AppAuthForExtensions.h in Headers */,
 				43CDF09C2642799B00E8E944 /* OIDExternalUserAgentIOS.h in Headers */,
 				43CDF09D2642799B00E8E944 /* OIDAuthorizationFlowSession.h in Headers */,
 			);
