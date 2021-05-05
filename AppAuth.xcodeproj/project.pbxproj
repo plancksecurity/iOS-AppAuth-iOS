@@ -653,7 +653,7 @@
 		34FEA6AC1DB6E083005C9212 /* OIDLoopbackHTTPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIDLoopbackHTTPServer.h; sourceTree = "<group>"; };
 		34FEA6AD1DB6E083005C9212 /* OIDLoopbackHTTPServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIDLoopbackHTTPServer.m; sourceTree = "<group>"; };
 		43CDF0A22642799B00E8E944 /* AppAuthForExtensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppAuthForExtensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		43CDF0A32642799C00E8E944 /* AppAuthForExtensions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "AppAuthForExtensions.plist"; path = "/Users/dirk/projects/pEp/AppAuth-iOS/AppAuthForExtensions.plist"; sourceTree = "<absolute>"; };
+		43CDF0A32642799C00E8E944 /* AppAuthForExtensions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = AppAuthForExtensions.plist; path = "/Users/dirk/projects/pEp/AppAuth-iOS/AppAuthForExtensions.plist"; sourceTree = "<absolute>"; };
 		60140F781DE4262000DA0DC3 /* OIDClientMetadataParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIDClientMetadataParameters.h; sourceTree = "<group>"; };
 		60140F791DE4276800DA0DC3 /* OIDClientMetadataParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIDClientMetadataParameters.m; sourceTree = "<group>"; };
 		60140F7B1DE42E1000DA0DC3 /* OIDRegistrationRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIDRegistrationRequest.m; sourceTree = "<group>"; };
@@ -816,8 +816,8 @@
 				341742291C5D84D0000EF209 /* Frameworks */,
 				341741FB1C5D82D3000EF209 /* UnitTests */,
 				341741AE1C5D8243000EF209 /* Source */,
+				43CDF0A826427D2500E8E944 /* AppAuthForExtensions */,
 				340E737D1C5D819B0076B1F6 /* Products */,
-				43CDF0A32642799C00E8E944 /* AppAuthForExtensions.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -968,6 +968,14 @@
 				34FEA6AD1DB6E083005C9212 /* OIDLoopbackHTTPServer.m */,
 			);
 			path = LoopbackHTTPServer;
+			sourceTree = "<group>";
+		};
+		43CDF0A826427D2500E8E944 /* AppAuthForExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				43CDF0A32642799C00E8E944 /* AppAuthForExtensions.plist */,
+			);
+			path = AppAuthForExtensions;
 			sourceTree = "<group>";
 		};
 		F6F60FAF1D2BFEF000325CB3 /* iOS */ = {
@@ -2688,7 +2696,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "AppAuthForExtensions.plist";
+				INFOPLIST_FILE = AppAuthForExtensions.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -2712,7 +2720,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "AppAuthForExtensions.plist";
+				INFOPLIST_FILE = AppAuthForExtensions.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
