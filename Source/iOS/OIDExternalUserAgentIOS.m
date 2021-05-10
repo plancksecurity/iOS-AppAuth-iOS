@@ -120,7 +120,9 @@ static id<OIDSafariViewControllerFactory> __nullable gSafariViewControllerFactor
     [_presentingViewController presentViewController:safariVC animated:YES completion:nil];
     openedSafari = YES;
   } else {
+#if !EXT_SHARE
     openedSafari = [[UIApplication sharedApplication] openURL:requestURL];
+#endif
   }
 
   if (!openedSafari) {
