@@ -1192,9 +1192,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 340DAE541D58216A00EC285B /* Build configuration list for PBXNativeTarget "AppAuth-macOS" */;
 			buildPhases = (
+				340DAE4C1D58216A00EC285B /* Headers */,
 				340DAE4A1D58216A00EC285B /* Sources */,
 				340DAE4B1D58216A00EC285B /* Frameworks */,
-				340DAE4C1D58216A00EC285B /* Headers */,
 			);
 			buildRules = (
 			);
@@ -1297,9 +1297,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 343AAA651E83463400F9D36E /* Build configuration list for PBXNativeTarget "AppAuth_iOS" */;
 			buildPhases = (
+				343AAA511E83463400F9D36E /* Headers */,
 				343AAA4F1E83463400F9D36E /* Sources */,
 				343AAA501E83463400F9D36E /* Frameworks */,
-				343AAA511E83463400F9D36E /* Headers */,
 				343AAA521E83463400F9D36E /* Resources */,
 			);
 			buildRules = (
@@ -1333,9 +1333,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 343AAA9E1E83487300F9D36E /* Build configuration list for PBXNativeTarget "AppAuth_watchOS" */;
 			buildPhases = (
+				343AAA961E83487200F9D36E /* Headers */,
 				343AAA941E83487200F9D36E /* Sources */,
 				343AAA951E83487200F9D36E /* Frameworks */,
-				343AAA961E83487200F9D36E /* Headers */,
 				343AAA971E83487200F9D36E /* Resources */,
 			);
 			buildRules = (
@@ -1351,9 +1351,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 343AAAB71E83489A00F9D36E /* Build configuration list for PBXNativeTarget "AppAuth_tvOS" */;
 			buildPhases = (
+				343AAAA31E83489A00F9D36E /* Headers */,
 				343AAAA11E83489A00F9D36E /* Sources */,
 				343AAAA21E83489A00F9D36E /* Frameworks */,
-				343AAAA31E83489A00F9D36E /* Headers */,
 				343AAAA41E83489A00F9D36E /* Resources */,
 			);
 			buildRules = (
@@ -1387,9 +1387,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 343AAAD31E8348AA00F9D36E /* Build configuration list for PBXNativeTarget "AppAuth_macOS" */;
 			buildPhases = (
+				343AAABF1E8348A900F9D36E /* Headers */,
 				343AAABD1E8348A900F9D36E /* Sources */,
 				343AAABE1E8348A900F9D36E /* Frameworks */,
-				343AAABF1E8348A900F9D36E /* Headers */,
 				343AAAC01E8348A900F9D36E /* Resources */,
 			);
 			buildRules = (
@@ -1440,9 +1440,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 43CDF09F2642799B00E8E944 /* Build configuration list for PBXNativeTarget "AppAuthForExtensions" */;
 			buildPhases = (
+				43CDF07F2642799B00E8E944 /* Headers */,
 				43CDF0632642799B00E8E944 /* Sources */,
 				43CDF07E2642799B00E8E944 /* Frameworks */,
-				43CDF07F2642799B00E8E944 /* Headers */,
 				43CDF09E2642799B00E8E944 /* Resources */,
 			);
 			buildRules = (
