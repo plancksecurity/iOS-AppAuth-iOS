@@ -95,6 +95,13 @@ NS_ASSUME_NONNULL_BEGIN
   }];
 }
 
+/// Checks two URL paths for equality, treating `@"/"` and `@""` as equal.
+- (BOOL)equalURLPath1:(NSString *)path1 path2:(NSString *)path2 {
+  return ([path1 isEqualToString:@""] && [path2 isEqualToString:@"/"]) ||
+  ([path1 isEqualToString:@"/"] && [path2 isEqualToString:@""]) ||
+  OIDIsEqualIncludingNil(path1, path2);
+}
+
 - (BOOL)shouldHandleURL:(NSURL *)URL {
   NSURL *standardizedURL = [URL standardizedURL];
   NSURL *standardizedRedirectURL = [_request.redirectURL standardizedURL];
@@ -104,7 +111,7 @@ NS_ASSUME_NONNULL_BEGIN
       OIDIsEqualIncludingNil(standardizedURL.password, standardizedRedirectURL.password) &&
       OIDIsEqualIncludingNil(standardizedURL.host, standardizedRedirectURL.host) &&
       OIDIsEqualIncludingNil(standardizedURL.port, standardizedRedirectURL.port) &&
-      OIDIsEqualIncludingNil(standardizedURL.path, standardizedRedirectURL.path);
+      [self equalURLPath1:standardizedURL.path path2:standardizedRedirectURL.path];
 }
 
 - (BOOL)resumeExternalUserAgentFlowWithURL:(NSURL *)URL {
