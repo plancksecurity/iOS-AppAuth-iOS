@@ -99,19 +99,19 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)equalURLPath1:(NSString *)path1 path2:(NSString *)path2 {
   return ([path1 isEqualToString:@""] && [path2 isEqualToString:@"/"]) ||
   ([path1 isEqualToString:@"/"] && [path2 isEqualToString:@""]) ||
-  OIDIsEqualIncludingNil(path1, path2);
+  OIDIsEqualIncludingNil(path1.lowercaseString, path2.lowercaseString);
 }
 
 - (BOOL)shouldHandleURL:(NSURL *)URL {
-  NSURL *standardizedURL = [URL standardizedURL];
-  NSURL *standardizedRedirectURL = [_request.redirectURL standardizedURL];
+    NSURL *standardizedURL = [URL standardizedURL];
+    NSURL *standardizedRedirectURL = [_request.redirectURL standardizedURL];
 
-  return OIDIsEqualIncludingNil(standardizedURL.scheme, standardizedRedirectURL.scheme) &&
-      OIDIsEqualIncludingNil(standardizedURL.user, standardizedRedirectURL.user) &&
-      OIDIsEqualIncludingNil(standardizedURL.password, standardizedRedirectURL.password) &&
-      OIDIsEqualIncludingNil(standardizedURL.host, standardizedRedirectURL.host) &&
-      OIDIsEqualIncludingNil(standardizedURL.port, standardizedRedirectURL.port) &&
-      [self equalURLPath1:standardizedURL.path path2:standardizedRedirectURL.path];
+    return OIDIsEqualIncludingNil(standardizedURL.scheme.lowercaseString, standardizedRedirectURL.scheme.lowercaseString) &&
+    OIDIsEqualIncludingNil(standardizedURL.user, standardizedRedirectURL.user) &&
+    OIDIsEqualIncludingNil(standardizedURL.password, standardizedRedirectURL.password) &&
+    OIDIsEqualIncludingNil(standardizedURL.host, standardizedRedirectURL.host.lowercaseString) &&
+    OIDIsEqualIncludingNil(standardizedURL.port, standardizedRedirectURL.port) &&
+    [self equalURLPath1:standardizedURL.path path2:standardizedRedirectURL.path];
 }
 
 - (BOOL)resumeExternalUserAgentFlowWithURL:(NSURL *)URL {
