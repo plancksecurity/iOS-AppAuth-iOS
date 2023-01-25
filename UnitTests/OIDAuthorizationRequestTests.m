@@ -19,9 +19,14 @@
 #import "OIDAuthorizationRequestTests.h"
 
 #import "OIDServiceConfigurationTests.h"
-#import "Source/OIDAuthorizationRequest.h"
-#import "Source/OIDScopeUtilities.h"
-#import "Source/OIDServiceConfiguration.h"
+
+#if SWIFT_PACKAGE
+@import AppAuthCore;
+#else
+#import "Source/AppAuthCore/OIDAuthorizationRequest.h"
+#import "Source/AppAuthCore/OIDScopeUtilities.h"
+#import "Source/AppAuthCore/OIDServiceConfiguration.h"
+#endif
 
 // Ignore warnings about "Use of GNU statement expression extension" which is raised by our use of
 // the XCTAssert___ macros.
@@ -440,13 +445,29 @@ static int const kCodeVerifierRecommendedLength = 43;
 
   NSString *scope = [OIDScopeUtilities scopesWithArray:@[ kTestScope, kTestScopeA ]];
 
-  XCTAssertThrows(
+  XCTAssertNoThrow(
       [[OIDAuthorizationRequest alloc] initWithConfiguration:configuration
                       clientId:kTestClientID
                   clientSecret:kTestClientSecret
                         scope:scope
                   redirectURL:[NSURL URLWithString:kTestRedirectURL]
                   responseType:@"code id_token"
+                         state:kTestState
+                         nonce:kTestNonce
+                  codeVerifier:kTestCodeVerifier
+                 codeChallenge:[[self class] codeChallenge]
+           codeChallengeMethod:[[self class] codeChallengeMethod]
+          additionalParameters:additionalParameters]
+  );
+
+  // https://tools.ietf.org/html/rfc6749#section-3.1.1 says the order of values does not matter
+  XCTAssertNoThrow(
+      [[OIDAuthorizationRequest alloc] initWithConfiguration:configuration
+                      clientId:kTestClientID
+                  clientSecret:kTestClientSecret
+                        scope:scope
+                  redirectURL:[NSURL URLWithString:kTestRedirectURL]
+                  responseType:@"id_token code"
                          state:kTestState
                          nonce:kTestNonce
                   codeVerifier:kTestCodeVerifier
@@ -462,6 +483,21 @@ static int const kCodeVerifierRecommendedLength = 43;
                         scope:scope
                   redirectURL:[NSURL URLWithString:kTestRedirectURL]
                   responseType:@"code token id_token"
+                         state:kTestState
+                         nonce:kTestNonce
+                  codeVerifier:kTestCodeVerifier
+                 codeChallenge:[[self class] codeChallenge]
+           codeChallengeMethod:[[self class] codeChallengeMethod]
+          additionalParameters:additionalParameters]
+  );
+
+  XCTAssertThrows(
+      [[OIDAuthorizationRequest alloc] initWithConfiguration:configuration
+                      clientId:kTestClientID
+                  clientSecret:kTestClientSecret
+                        scope:scope
+                  redirectURL:[NSURL URLWithString:kTestRedirectURL]
+                  responseType:@"token"
                          state:kTestState
                          nonce:kTestNonce
                   codeVerifier:kTestCodeVerifier

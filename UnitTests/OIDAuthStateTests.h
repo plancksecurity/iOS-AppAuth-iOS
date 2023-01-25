@@ -18,8 +18,12 @@
 
 #import <XCTest/XCTest.h>
 
-#import "Source/OIDAuthStateChangeDelegate.h"
-#import "Source/OIDAuthStateErrorDelegate.h"
+#if SWIFT_PACKAGE
+@import AppAuthCore;
+#else
+#import "Source/AppAuthCore/OIDAuthStateChangeDelegate.h"
+#import "Source/AppAuthCore/OIDAuthStateErrorDelegate.h"
+#endif
 
 @class OIDAuthState;
 
@@ -27,22 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /*! @brief Unit tests for @c OIDAuthState.
  */
-@interface OIDAuthStateTests : XCTestCase {
-  // private variables
-  /*! @brief An expectation for tests waiting on OIDAuthStateChangeDelegate.didChangeState:.
-   */
-  XCTestExpectation *_didChangeStateExpectation;
-
-  /*! @brief An expectation for tests waiting on
-          OIDAuthStateErrorDelegate.didEncounterAuthorizationError:.
-   */
-  XCTestExpectation *_didEncounterAuthorizationErrorExpectation;
-
-  /*! @brief An expectation for tests waiting on
-          OIDAuthStateErrorDelegate.didEncounterTransientError:.
-   */
-  XCTestExpectation *_didEncounterTransientErrorExpectation;
-}
+@interface OIDAuthStateTests : XCTestCase
 
 /*! @brief Creates a new @c OIDAuthState for testing.
  */

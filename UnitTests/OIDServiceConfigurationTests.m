@@ -21,10 +21,15 @@
 #import <objc/runtime.h>
 
 #import "OIDServiceDiscoveryTests.h"
-#import "Source/OIDAuthorizationService.h"
-#import "Source/OIDError.h"
-#import "Source/OIDServiceConfiguration.h"
-#import "Source/OIDServiceDiscovery.h"
+
+#if SWIFT_PACKAGE
+@import AppAuthCore;
+#else
+#import "Source/AppAuthCore/OIDAuthorizationService.h"
+#import "Source/AppAuthCore/OIDError.h"
+#import "Source/AppAuthCore/OIDServiceConfiguration.h"
+#import "Source/AppAuthCore/OIDServiceDiscovery.h"
+#endif
 
 // Ignore warnings about "Use of GNU statement expression extension" which is raised by our use of
 // the XCTAssert___ macros.
@@ -81,7 +86,11 @@ static NSString *const kIssuerTestExpectedFullDiscoveryURL =
     @"https://accounts.google.com/.well-known/openid-configuration";
 
 
-@implementation OIDServiceConfigurationTests
+@implementation OIDServiceConfigurationTests {
+  /*! @brief A list of tasks to perform during tearDown.
+   */
+  NSMutableArray<TeardownTask> *_teardownTasks;
+}
 
 + (OIDServiceConfiguration *)testInstance {
   NSURL *authEndpoint = [NSURL URLWithString:kInitializerTestAuthEndpoint];

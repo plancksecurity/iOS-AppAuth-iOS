@@ -21,11 +21,17 @@
 #import "OIDAuthorizationResponseTests.h"
 #import "OIDRegistrationResponseTests.h"
 #import "OIDTokenResponseTests.h"
-#import "Source/OIDAuthState.h"
-#import "Source/OIDAuthorizationResponse.h"
-#import "Source/OIDErrorUtilities.h"
-#import "Source/OIDRegistrationResponse.h"
-#import "Source/OIDTokenResponse.h"
+
+#if SWIFT_PACKAGE
+@import AppAuthCore;
+#else
+#import "Source/AppAuthCore/OIDAuthState.h"
+#import "Source/AppAuthCore/OIDAuthorizationResponse.h"
+#import "Source/AppAuthCore/OIDErrorUtilities.h"
+#import "Source/AppAuthCore/OIDRegistrationResponse.h"
+#import "Source/AppAuthCore/OIDTokenResponse.h"
+#endif
+
 #import "OIDTokenRequestTests.h"
 
 // Ignore warnings about "Use of GNU statement expression extension" which is raised by our use of
@@ -41,7 +47,21 @@
 @interface OIDAuthStateTests () <OIDAuthStateChangeDelegate, OIDAuthStateErrorDelegate>
 @end
 
-@implementation OIDAuthStateTests
+@implementation OIDAuthStateTests {
+  /*! @brief An expectation for tests waiting on OIDAuthStateChangeDelegate.didChangeState:.
+   */
+  XCTestExpectation *_didChangeStateExpectation;
+
+  /*! @brief An expectation for tests waiting on
+          OIDAuthStateErrorDelegate.didEncounterAuthorizationError:.
+   */
+  XCTestExpectation *_didEncounterAuthorizationErrorExpectation;
+
+  /*! @brief An expectation for tests waiting on
+          OIDAuthStateErrorDelegate.didEncounterTransientError:.
+   */
+  XCTestExpectation *_didEncounterTransientErrorExpectation;
+}
 
 + (OIDAuthState *)testInstance {
   OIDAuthorizationResponse *authorizationResponse =

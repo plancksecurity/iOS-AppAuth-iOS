@@ -19,9 +19,14 @@
 #import "OIDRegistrationRequestTests.h"
 
 #import "OIDServiceConfigurationTests.h"
-#import "Source/OIDClientMetadataParameters.h"
-#import "Source/OIDRegistrationRequest.h"
-#import "Source/OIDServiceConfiguration.h"
+
+#if SWIFT_PACKAGE
+@import AppAuthCore;
+#else
+#import "Source/AppAuthCore/OIDClientMetadataParameters.h"
+#import "Source/AppAuthCore/OIDRegistrationRequest.h"
+#import "Source/AppAuthCore/OIDServiceConfiguration.h"
+#endif
 
 /*! @brief Test key for the @c additionalParameters property.
  */
@@ -30,6 +35,10 @@ static NSString *const kTestAdditionalParameterKey = @"A";
 /*! @brief Test value for the @c additionalParameters property.
  */
 static NSString *const kTestAdditionalParameterValue = @"1";
+
+/*! @brief Test value for the @c initialAccessToken property.
+ */
+static NSString *const kInitialAccessTokenTestValue = @"test";
 
 /*! @brief Test value for the @c redirectURL property.
  */
@@ -66,6 +75,7 @@ static NSString *kTokenEndpointAuthMethodTestValue = @"client_secret_basic";
                                  grantTypes:@[ kGrantTypeTestValue ]
                                 subjectType:kSubjectTypeTestValue
                     tokenEndpointAuthMethod:kTokenEndpointAuthMethodTestValue
+                         initialAccessToken:kInitialAccessTokenTestValue
                        additionalParameters:additionalParameters];
 
   return request;
@@ -84,6 +94,7 @@ static NSString *kTokenEndpointAuthMethodTestValue = @"client_secret_basic";
 
   XCTAssertNotNil(request.configuration);
   XCTAssertEqualObjects(request.applicationType, OIDApplicationTypeNative);
+  XCTAssertEqualObjects(request.initialAccessToken, kInitialAccessTokenTestValue);
   XCTAssertEqualObjects(request.redirectURIs, @[ [NSURL URLWithString:kRedirectURLTestValue] ]);
   XCTAssertEqualObjects(request.responseTypes, @[ kResponseTypeTestValue ]);
   XCTAssertEqualObjects(request.grantTypes, @[ kGrantTypeTestValue ]);
@@ -101,6 +112,7 @@ static NSString *kTokenEndpointAuthMethodTestValue = @"client_secret_basic";
   XCTAssertEqualObjects(requestCopy.configuration, request.configuration);
 
   XCTAssertEqualObjects(requestCopy.applicationType, request.applicationType);
+  XCTAssertEqualObjects(requestCopy.initialAccessToken, kInitialAccessTokenTestValue);
   XCTAssertEqualObjects(requestCopy.redirectURIs, request.redirectURIs);
   XCTAssertEqualObjects(requestCopy.responseTypes, request.responseTypes);
   XCTAssertEqualObjects(requestCopy.grantTypes, request.grantTypes);
@@ -120,6 +132,7 @@ static NSString *kTokenEndpointAuthMethodTestValue = @"client_secret_basic";
 
   XCTAssertNotNil(request.configuration);
   XCTAssertEqualObjects(request.applicationType, OIDApplicationTypeNative);
+  XCTAssertEqualObjects(request.initialAccessToken, kInitialAccessTokenTestValue);
   XCTAssertEqualObjects(request.redirectURIs, @[ [NSURL URLWithString:kRedirectURLTestValue] ]);
   XCTAssertEqualObjects(request.responseTypes, @[ kResponseTypeTestValue ]);
   XCTAssertEqualObjects(request.grantTypes, @[ kGrantTypeTestValue ]);
@@ -139,6 +152,7 @@ static NSString *kTokenEndpointAuthMethodTestValue = @"client_secret_basic";
   XCTAssertNotNil(requestCopy.configuration);
 
   XCTAssertEqualObjects(requestCopy.applicationType, request.applicationType);
+  XCTAssertEqualObjects(requestCopy.initialAccessToken, kInitialAccessTokenTestValue);
   XCTAssertEqualObjects(requestCopy.redirectURIs, request.redirectURIs);
   XCTAssertEqualObjects(requestCopy.responseTypes, request.responseTypes);
   XCTAssertEqualObjects(requestCopy.grantTypes, request.grantTypes);
@@ -162,6 +176,8 @@ static NSString *kTokenEndpointAuthMethodTestValue = @"client_secret_basic";
   XCTAssertEqualObjects(httpRequest.HTTPMethod, @"POST");
   XCTAssertEqualObjects([httpRequest valueForHTTPHeaderField:@"Content-Type"],
                         @"application/json");
+  XCTAssertEqualObjects([httpRequest valueForHTTPHeaderField:@"Authorization"],
+                        @"Bearer test");
   XCTAssertEqualObjects(httpRequest.URL, request.configuration.registrationEndpoint);
   XCTAssertEqualObjects(parsedJSON[OIDApplicationTypeParam], request.applicationType);
   XCTAssertEqualObjects(parsedJSON[OIDRedirectURIsParam][0],

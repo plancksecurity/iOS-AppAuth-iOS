@@ -20,11 +20,16 @@
 
 #import "OIDAuthorizationResponseTests.h"
 #import "OIDServiceConfigurationTests.h"
-#import "Source/OIDAuthorizationRequest.h"
-#import "Source/OIDAuthorizationResponse.h"
-#import "Source/OIDScopeUtilities.h"
-#import "Source/OIDServiceConfiguration.h"
-#import "Source/OIDTokenRequest.h"
+
+#if SWIFT_PACKAGE
+@import AppAuthCore;
+#else
+#import "Source/AppAuthCore/OIDAuthorizationRequest.h"
+#import "Source/AppAuthCore/OIDAuthorizationResponse.h"
+#import "Source/AppAuthCore/OIDScopeUtilities.h"
+#import "Source/AppAuthCore/OIDServiceConfiguration.h"
+#import "Source/AppAuthCore/OIDTokenRequest.h"
+#endif
 
 // Ignore warnings about "Use of GNU statement expression extension" which is raised by our use of
 // the XCTAssert___ macros.
@@ -115,7 +120,7 @@ static NSString *const kTestAdditionalParameterValue = @"1";
       [[OIDTokenRequest alloc] initWithConfiguration:authResponse.request.configuration
                                            grantType:OIDGrantTypeAuthorizationCode
                                    authorizationCode:authResponse.authorizationCode
-                                         redirectURL:authResponse.request.redirectURL
+                                         redirectURL:nil
                                             clientID:authResponse.request.clientID
                                         clientSecret:authResponse.request.clientSecret
                                               scopes:scopesArray
@@ -235,6 +240,24 @@ static NSString *const kTestAdditionalParameterValue = @"1";
 
   id authorization = [urlRequest.allHTTPHeaderFields objectForKey:@"Authorization"];
   XCTAssertNotNil(authorization);
+}
+
+- (void)testAuthorizationCodeNullRedirectURL {
+  OIDAuthorizationResponse *authResponse = [OIDAuthorizationResponseTests testInstance];
+  NSArray<NSString *> *scopesArray =
+      [OIDScopeUtilities scopesArrayWithString:authResponse.request.scope];
+  NSDictionary *additionalParameters =
+      @{ kTestAdditionalParameterKey : kTestAdditionalParameterValue };
+  XCTAssertThrows([[OIDTokenRequest alloc] initWithConfiguration:authResponse.request.configuration
+                                                       grantType:OIDGrantTypeAuthorizationCode
+                                               authorizationCode:authResponse.authorizationCode
+                                                     redirectURL:nil
+                                                        clientID:authResponse.request.clientID
+                                                    clientSecret:authResponse.request.clientSecret
+                                                          scopes:scopesArray
+                                                    refreshToken:kRefreshTokenTestValue
+                                                    codeVerifier:authResponse.request.codeVerifier
+                                            additionalParameters:additionalParameters], @"");
 }
 
 @end
