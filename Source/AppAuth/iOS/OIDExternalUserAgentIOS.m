@@ -164,20 +164,14 @@ NS_ASSUME_NONNULL_BEGIN
       openedUserAgent = [authenticationVC start];
     }
   }
-  // iOS 9 and 10, use SFSafariViewController
-  if (@available(iOS 9.0, *)) {
-    if (!openedUserAgent && _presentingViewController) {
-      SFSafariViewController *safariVC =
-          [[SFSafariViewController alloc] initWithURL:requestURL];
-      safariVC.delegate = self;
-      _safariVC = safariVC;
-      [_presentingViewController presentViewController:safariVC animated:YES completion:nil];
-      openedUserAgent = YES;
-    }
-  }
-  // iOS 8 and earlier, use mobile Safari
-  if (!openedUserAgent){
-    openedUserAgent = [[UIApplication sharedApplication] openURL:requestURL];
+
+  if (!openedUserAgent && _presentingViewController) {
+    SFSafariViewController *safariVC =
+        [[SFSafariViewController alloc] initWithURL:requestURL];
+    safariVC.delegate = self;
+    _safariVC = safariVC;
+    [_presentingViewController presentViewController:safariVC animated:YES completion:nil];
+    openedUserAgent = YES;
   }
 
   if (!openedUserAgent) {
